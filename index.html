@@ -1,0 +1,501 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="shortcut icon" href="favicon.ico"/>
+
+		<title>Рефакторинг</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/default.css">
+		<style>
+		.reveal .big-code {
+			font-size: 30px;
+			line-height: 1.2em;
+			padding: 10px;
+		}
+		.reveal .mid-code {
+			font-size: 25px;
+			line-height: 1.2em;
+			padding: 10px;
+		}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Лайфхаки фронтенд разработчика</h2>
+					<p>Алексей Золотых, Wrike</p>
+				</section>
+				<section>
+					<h2>Инструмент для совместной работы</h2>
+					<img src="img/wrike.png" alt="">
+				</section>
+				<section>
+					<h2>1. Верстка</h2>
+				</section>
+				<section data-background-video="img/css1.mov">
+					<h2>Когда я начинал верстать</h2>
+				</section>
+				<section>
+					<h3>Что нужно было верстать?</h3>
+					<ul>
+						<li class="fragment">Галерея</li>
+						<li class="fragment">Шапка</li>
+						<li class="fragment">Футер</li>
+						<li class="fragment">Header</li>
+						<li class="fragment">Форма обратной связи</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Типовые решения</h2>
+					<img src="img/css2.png" alt="">
+				</section>
+				<section>
+					<h3>Zen Coding (emmet)</h3>
+					<p class="fragment">
+						div.header>a.logo <span class="fragment">TAB</span>
+					</p>
+					<pre class="fragment"><code><div class="header">
+  <a class="logo" href="">|</a>
+</div></code></pre>
+				</section>
+				<section>
+					<h2>Pixel perfect</h2>
+					<img src="img/css3.png" alt="">
+				</section>
+				<section data-transition="zoom-in none">
+					<img src="img/css4.png" alt="">
+				</section>
+				<section data-transition="none">
+					<img src="img/css5.png" alt="">
+				</section>
+				<section data-background-video="img/css6.mov"></section>
+				<section>
+					<h3>
+						Live Reload
+					</h3>
+					<p>
+						<span class="fragment">Стили поменялись →</span>
+						<span class="fragment">Бразуер перезагрузился</span>
+					</p>
+				</section>
+				<section>
+					<h2>Пришлось писать свой</h2>
+					<ul>
+						<li class="fragment">Сохраняет позицию и картинку после перезагрузки</li>
+						<li class="fragment">Горячие клавиши</li>
+						<li class="fragment">Горячие клавиши как в VIM (hjkl)</li>
+					</ul>
+					<p class="fragment">
+						<a href="https://goo.gl/3i1WRO">goo.gl/3i1WRO</a>
+					</p>
+				</section>
+				<section data-background-video="img/css7.mov"></section>
+				<section data-transition="none">
+					<h3>Autosave Dev Tools</h3>
+					<p><a href="https://goo.gl/5BdQ05">goo.gl/5BdQ05</a></p>
+					<img src="img/css9.webp" alt="">
+				</section>
+				<section data-transition="none">
+					<h3>Autosave Dev Tools</h3>
+					<p><a href="https://goo.gl/5BdQ05">goo.gl/5BdQ05</a></p>
+					<img src="img/autosave.webp" alt="">
+				</section>
+				<section>
+					<h3>Autosave Dev Tools + мой PixelPerfect</h3>
+					<ul>
+						<li class="fragment">Пишем HTML в BEM стиле</li>
+						<li class="fragment">Выдираем селекторы из HTML</li>
+					</ul>
+				</section>
+				<section>
+				<h2><a href="http://extractcss.com/">extractcss.com</a></h2>
+					<img src="img/css8.png" alt="">
+				</section>
+				<section>
+					<h3>Autosave Dev Tools + мой PixelPerfect</h3>
+					<ul>
+						<li>Пишем HTML в BEM стиле</li>
+						<li>Выдираем селекторы из HTML</li>
+						<li class="fragment">Запускаем Autosave</li>
+						<li class="fragment">Пишем стили из ChromeDevTools</li>
+						<li class="fragment">Подгоняем границы элементов, размеры шрифтов и прочее</li>
+						<li class="fragment">Profit!</li>
+					</ul>
+					<p class="fragment">
+						<sub>*</sub> Работает только с CSS (не умеет source maps)
+					</p>
+				</section>
+				<section>
+					<p>Webpack и BrowserSync умеют перезагружать стили без перезагрузки страницы</p>
+					<p class="fragment">Workspaces из ChromeDevTools делают тоже самое и поддерживают source maps</p>
+				</section>
+				<section>
+					<h2>Скорость верстки растет очень быстро</h2>
+				</section>
+				<section>
+					<p>Если человек знает типовые решения, он все равно быстрее</p>
+					<img src="img/css2.png" alt="">
+				</section>
+				<section>
+					<h2>2. Презентация проекта</h2>
+					<img src="img/p1.jpg" alt="">
+				</section>
+				<section>
+					<h3>Ситуация</h3>
+					<ul>
+						<li class="fragment">Фронтенд готов на половину</li>
+						<li class="fragment">Бекенд 🍻 
+							<span class="fragment">🥂</span>
+							<span class="fragment">🍷</span>
+							<span class="fragment">🍾</span>
+							<span class="fragment">🍹</span>
+							<span class="fragment">... короче он еще не готов</span>
+							<span class="fragment">🤢</span>
+						</li>
+						<li class="fragment">Заказчик хочет посмотреть проект</li>
+						<li class="fragment">Сейчас 😇</li>
+						<li class="fragment">👿 Вот прямо сейчас</li>
+						<li class="fragment">За что я вам плачу!? 🤦‍♂️</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Github pages?</h3>
+					<p class="fragment">&mdash; Чтобы все увидели наш код!?</p>
+				</section>
+				<section>
+					<h3>Хостинг?</h3>
+					<p class="fragment">Денег нет, но вы держитесь!</p>
+				</section>
+				<section data-transition="fade-in none">
+					<h3><a href="https://ngrok.com/">ngrok.com</a></h3>
+					<pre><code>$ ngrok http 8000</code></pre>
+					<p class="fragment">Ваше приложение доступно из интернета</p>
+				</section>
+				<section data-transition="none">
+					<h3 ><a style="text-decoration:line-through" href="https://ngrok.com/">ngrok.com</a> </h3>
+					<span class="fragment">стал стоить $5 в месяц</span>
+					<p class="fragment">А денег, как известно, нет!</p>
+				</section>
+				<section>
+					<h2><a href="http://localtunnel.me">localtunnel.me</a></h2>
+					<p class="fragment">Тоже самое, только бесплатно</p>
+				</section>
+				<section data-background-video="img/p2.mov"></section>
+				<section>
+					<pre><code class="big-code">python3 -m http.server 8001</code></pre>
+					<p class="fragment">Запускает веб-сервер одной строкой с корнем в папке в которой запущен</p>
+				</section>
+				<section>
+					<h4>Ruby 1.9.2+</h4>
+					<pre><code class="big-code">ruby -run -ehttpd . -p8000</code></pre>
+					<br>
+					<h4>Node</h4>
+					<pre><code class="big-code">npm install -g http-server && http-server -p 8000</code></pre>
+					<br>
+					<h4>PHP</h4>
+					<pre><code class="big-code">php -S 127.0.0.1:8000</code></pre>
+				</section>
+				<section>
+					<p>Есть даже это😜</p>
+					<pre><code class="big-code">C:\> "C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:C:\MyWeb /port:8000</code></pre>
+				</section>
+				<section>
+					<h2>Еще много чего интересного: <a href="https://goo.gl/mPaagd">goo.gl/mPaagd</a></h2>
+				</section>
+				<section>
+					<h3>Ситуация 2</h3>
+					<ul>
+						<li class="fragment">Фронтенд готов на 80%</li>
+						<li class="fragment">Бекенд <span class="fragment">... короче он еще не готов</span></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Нужно быстро развернуть API</h3>
+				</section>
+				<section>
+					<h2><a href="http://deployd.com/">deployd.com</a></h2>
+					<ul>
+						<li class="fragment">Быстро поднимаем API без кода</li>
+					</ul>
+				</section>
+				<section>
+				<h3>Схема</h3>
+				<img src="img/d3.png" alt="">
+				</section>
+				<section>
+				<h3>GUI для изменения схемы</h3>
+				<img src="img/d4.png" alt="">
+				</section>
+				<section>
+				<h3>GUI для добавления данных</h3>
+				<img src="img/d5.png" alt="">
+				</section>
+				<section>
+					<pre><code class="big-code">curl localhost:2403/test | python -m json.tool</code></pre>
+				</section>
+				<section>
+					<h2>3. Консоль</h2>
+				</section>
+				<section>
+					<h3>
+						Поиск
+					</h3>
+				</section>
+				<section>
+					<h4>Как вы находите что-то в вашем коде?</h4>
+					<p class="fragment">Поиск в IDE или в текстовом редакторе</p>
+				</section>
+				<section>
+					Что если поиск в IDE слишком медленный?
+				</section>
+				<section>
+					<h4>Поиск слова &laquo;test&raquo; в проекте на 2 000 000</h4>
+					<ul>
+						<li class="fragment" data-fragment-index="1">WebStorm: 34сек</li>
+						<li class="fragment" data-fragment-index="2">Grep: ^C после 3 минут 💩</li>
+						<li class="fragment" data-fragment-index="3">Silver searcher: 7 сек 
+							<span data-fragment-index="5" class="fragment fade-out">👍</span>
+								<span data-fragment-index="5" class="fragment fade-in">💩</span>
+						</li>
+						<li class="fragment" data-fragment-index="4">Rip grep: &lt; 1 сек 👍</li>
+						<li class="fragment" data-fragment-index="6">git grep: &lt; 1 сек 👍</li>
+					</ul>
+				</section>
+				<section data-background-color="#000" data-background-image="img/gop.jpg">
+					<h2><span style="background: rgba(0,0,0, 0.7); padding: 0 12px;">Четкий поиск</span></h2>
+				</section>
+				<section data-background-color="#000" data-background-image="img/botan.jpg">
+					<h2><span style="background: rgba(0,0,0, 0.7); padding: 0 12px;">Нечеткий поиск</span></h2>
+				</section>
+				<section>
+					<blockquote>По заданному слову найти в тексте или словаре размера n все слова, совпадающие с этим словом (или
+						начинающиеся с этого слова) с учетом k возможных различий
+						<footer>
+							&mdash; <cite><a href="https://habrahabr.ru/post/114997/">Цитата с Хабра</a></cite>
+						</footer>
+					</blockquote>
+				</section>
+				<section>
+					<h2>FZF</h2>
+					<p>
+						<a href="https://github.com/junegunn/fzf">github.com/junegunn/fzf</a>
+					</p>
+				</section>
+				<section>
+					<h2>Зачем?</h2>
+					<img src="img/why.jpeg" alt="">
+				</section>
+				<section>
+					<h3>Философия UNIX гласит:</h3>
+					<ul>
+						<li class="fragment">Пишите программы, которые делают что-то одно и делают это хорошо.</li>
+						<li class="fragment">Пишите программы, которые бы работали вместе.</li>
+						<li class="fragment">Пишите программы, которые бы поддерживали текстовые потоки, поскольку это универсальный интерфейс».</li>
+					</ul>
+				</section>
+				<section>
+				<h2>И?</h2>
+				</section>
+				<section>
+					<h3>Умный kill</h3>
+					<pre><code class="mid-code">
+# fkill - kill process
+fkill() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
+}
+					</code></pre>
+				</section>
+				<section data-background-video="img/fkill.mov"></section>
+				<section>
+					<h3>Умный переключатель веток в git</h3>
+					<pre><code>
+fbr() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+					</code></pre>
+				</section>
+				<section data-background-video="img/fbr.mov"></section>
+				<section>
+					<h2>Другие примеры</h2>
+					<ul>
+						<li class="fragment">Открыть файл в дефолтном редакторе</li>
+						<li class="fragment">Перейти в другую директорию</li>
+						<li class="fragment">Поиск по истории Chrome</li>
+						<li class="fragment">Напиши все, что захочешь!</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Больше примеров</h2>
+					<p>
+						<a href="https://github.com/junegunn/fzf/wiki/examples">github.com/junegunn/fzf/wiki/examples</a>
+					</p>
+				</section>
+				<section>
+					<h3>say 'ваш текст'</h3>
+					<p class="fragment">В OSX можно проговорить текст голосом</p>
+				</section>
+				<section>
+					<h3>Будильник</h3>
+					<pre><code class="big-code">$ say "Idi rabotat', mat' tvoyu'" | at 12:00</code></pre>
+				</section>
+				<section>
+					<h3>Аудиокнига</h3>
+					<pre ><code class="big-code">$ say -f  manual.txt</code></pre>
+					<div class="fragment">
+						<p>Можно сохранить в файл</p>
+						<pre ><code class="big-code">$ say -o filename -f  manual.txt</code></pre>
+					</div>
+				</section>
+				<section>
+					<h2>Линуксойды! Не грустите!</h2>
+					<pre ><code class="big-code">echo "Text to speak"|espeak</code></pre>
+				</section>
+				<section>
+					<h2>Ждать, когда пройдут все тесты дорого</h2>
+					<p>pub run grinder test  155.96s user 38.64s system 226% cpu 1:25.82 total</p>
+				</section>
+				<section>
+					<h3>Следим за файловой системой и запускаем один тест по изменению</h3>
+					<p>
+						<a href="https://github.com/emcrisostomo/fswatch">github.com/emcrisostomo/fswatch</a>
+					</p>
+				</section>
+				<section>
+					<h3>После любого изменения в папке тест запустится снова</h3>
+					<pre><code class="big-code zsh">$ fswatch -o . | xargs -n1 -I{} \
+> pub run test -x codegen \
+> test/src/widget/widget.dart \
+> -pcontent-shell --pub-serve=8085</code></pre>
+				</section>
+				<section>
+					<pre><code>time ./build.sh.cmd</code></pre>
+					<p>./build.sh.cmd  580.17s user 78.61s system 134% cpu 8:11.57 total</p>
+					<p class="fragment">Хорошо уведомить, когда сборка закончится</p>
+				</section>
+				<section>
+					<h3>Десткопные уведомления из консоли</h3>
+					<img src="img/osx_banner.png" alt="">
+					<p><a href="https://github.com/variadico/noti">github.com/variadico/noti</a></p>
+				</section>
+				<section>
+					<pre><code class="big-code zsh">$ noti ./build.sh</code></pre>
+				</section>
+				<section>
+					<h3>Windows</h3>
+					<img src="img/win10_banner.png" alt="">
+					<h3>Linux (Mint)</h3>
+					<img src="img/mint_banner.png" alt="">
+				</section>
+				<section>
+					<h2>4. Git</h2>
+				</section>
+				<section data-transition="slide-in none">
+					<h3>Git ignore</h3>
+					<img src="img/ignore.png" alt="">
+				</section>
+				<section data-transition="none">
+					<h3>Git ignore</h3>
+					<img src="img/ignore2.png" alt="">
+				</section>
+				<section data-transition="none">
+					<h3>Git ignore</h3>
+					<img src="img/ignore1.png" alt="">
+				</section>
+				<section>
+					<h2>Возможно открывать сайт и не нужно?</h2>
+					<pre ><code>$ git config --global alias.ignore \
+> '!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi'</code></pre>
+				</section>
+				<section>
+				<img src="img/git17.png" alt="">
+				</section>
+				<section>
+					<h3>git-standup</h3>
+					<p>
+					<a href="https://github.com/kamranahmedse/git-standup">github.com/kamranahmedse/git-standup</a>
+					</p>
+<pre ><code class="big-code">$ npm install -g git-standup</code></pre>
+				</section>
+				<section>
+					<h3>git-standup</h3>
+					<img src="img/standup.png" alt="">
+				</section>
+				<section>
+					<p>Умеет работать с несколькими репозиториями</p>
+				</section>
+				<section>
+					<h3>Используем мердж тул из продуктов JetBrains</h3>
+					<p>файл: ~./.gitconfig </p>
+<pre ><code >[merge]
+    tool = intellij
+[mergetool "intellij"]
+    cmd = /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+    trustExitCode = true
+[diff]
+    tool = intellij
+[difftool "intellij"]
+    cmd = /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+</code></pre></code></pre>
+				</section>
+				<section>
+					<h3>Конфликты?</h3>
+					<img src="img/idea1.png" alt="">
+				</section>
+				<section>
+					<h3>Git mergetool</h3>
+					<img src="img/idea2.png" alt="">
+				</section>
+				<section>
+					<h2>Спасибо! Жду ваших вопросов!</h2>
+					<p>не стесняйтесь делиться своими лайфхаками!</p>
+					<p>twitter: @zolotyh</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<!--<script src="js/pixelperfect.js"></script>-->
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+		</script>
+	</body>
+</html>
